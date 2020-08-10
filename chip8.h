@@ -25,7 +25,7 @@ class chip8 {
   unsigned short stack[16];
   unsigned short sp;
 
-  unsigned chart key[16];
+  unsigned char key[16];
 };
 
 unsigned char chip8_fontset[80] =
