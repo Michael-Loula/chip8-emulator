@@ -4,6 +4,23 @@
 
 void chip8::init() {
   //Initialize regs and mem
+  I = 0;
+  pc = 0;
+  sp = 0;
+  opcode = 0;
+  delay_timer = 0;
+  sound_timer = 0;
+  for (int i = 0; i < 4096; i++)
+    memory[i] = 0;
+  for (int i = 0; i < 16; i++) {
+    V[i] = 0;
+    stack[i] = 0;
+    key[i] = 0;
+  }
+  for (int i = 0; i < 80; i++)
+    memory[i + 0x050] = chip8_fontset[i];
+  for (int i = 0; i < (64*32); i++)
+    gfx[i] = 0;
 }
 
 void chip8::emulateCycle() {
