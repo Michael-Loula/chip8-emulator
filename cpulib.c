@@ -5,7 +5,6 @@
 #include <unistd.h>
 #include <SDL2/SDL.h>
 
-
 unsigned char chip8_fontset[80] =
 { 
   0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
@@ -30,7 +29,7 @@ int cpu_fetch(cpu* chip8) {
     chip8->opcode = chip8->mem[chip8->pc] << 8 | chip8->mem[chip8->pc + 1];
     return 0;
 }
-
+//advance timers
 int timers_next(cpu* chip8)  {
     if (chip8->dt > 0) {
         chip8->dt--;

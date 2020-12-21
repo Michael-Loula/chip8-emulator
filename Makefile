@@ -1,4 +1,15 @@
-ceemu:
-	clang -Wall -o ceemu ceemu_main.c cpulib.c -I include -L lib -l SDL2-2.0.0
+CC = clang
+CFLAGS = -Wall -I include 
+LDFLAGS = -L lib -l SDL2-2.0.0
+DEPS = cpulib.h
+
+OBJ = cpulib.o ceemu_main.o
+
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS) 
+
+ceemu: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+
 clean:
-	rm ceemu
+	rm -f *.o ceemu

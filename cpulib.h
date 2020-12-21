@@ -15,7 +15,7 @@ typedef struct cpu_state {
     unsigned char dflag;
     
 }cpu;
-
+//cpu struct
 
 int timers_next(cpu*);
 int cpu_exec(cpu*);
