@@ -56,13 +56,8 @@ int main(int argc, char **argv) {
 
     SDL_CreateWindowAndRenderer(1024, 512, 0, &window, &renderer);
     SDL_RenderSetLogicalSize(renderer, 1024, 512);
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
     SDL_RenderClear(renderer);
-    SDL_Texture* text = SDL_CreateTexture(renderer,
-            SDL_PIXELFORMAT_ARGB8888,
-            SDL_TEXTUREACCESS_STREAMING,
-            64, 32);
-    uint32_t buf[64*32];
     //loads rom directly into memory using read
     //cpu_ldrm(&chip8,"chip8-test-rom/test_opcode.ch8");
     cpu_ldrm(&chip8,"pong.rom");
@@ -76,22 +71,22 @@ int main(int argc, char **argv) {
 
         //draw if need be
         if (chip8.dflag) {
+            
             //draw
             SDL_Rect rct;
             rct.w = 16;
             rct.h = 16;
             for (unsigned int i = 0; i < (64*32); i++) {
-                
                     unsigned int x = i / 32;
                     unsigned int y = i % 32;
                     rct.x = x*16;
                     rct.y = y*16;
                     if (chip8.gfx[(64*y)+x]) {
-                        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
                     }
                     else {
-                        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
                     }
                     SDL_RenderDrawRect(renderer,&rct);
                     SDL_RenderFillRect(renderer,&rct);
