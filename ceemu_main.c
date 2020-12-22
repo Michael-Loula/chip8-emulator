@@ -1,5 +1,6 @@
 #include "cpulib.h"
 #include <SDL2/SDL.h>
+#include <unistd.h>
 
 //declare gfx stuff
 SDL_Renderer *renderer;
@@ -63,14 +64,13 @@ int main(int argc, char **argv) {
     //go
     for(;;) {
         //fetches and executes opcode
-        cycle_next(&chip8);
-        puts("cycle next");        
+        cycle_next(&chip8);   
+        usleep(600); 
         //ticks down timers
         timers_next(&chip8);
 
         //draw if need be
         if (chip8.dflag) {
-            puts("dflag on");
             //draw
             SDL_Rect rct;
             rct.w = 10;
@@ -98,8 +98,6 @@ int main(int argc, char **argv) {
             chip8.dflag = 0;
         }
         if (SDL_PollEvent(&event)) {
-            //do i actually need/want this?
-            //memset(chip8.key,0,16);
             switch (event.type) {
                 case SDL_QUIT:
                     SDL_DestroyRenderer(renderer);
@@ -127,7 +125,6 @@ int main(int argc, char **argv) {
                 default: 
                     break;
             }
-            puts("end of line");
         }
             
     }

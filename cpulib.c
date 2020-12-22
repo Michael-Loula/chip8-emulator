@@ -74,7 +74,7 @@ int cycle_next(cpu* chip8) {
 
 int cpu_exec(cpu* chip8) {
     /*big ol switch statement*/
-    printf("%X\n",chip8->opcode);
+    //printf("%X\n",chip8->opcode);
     switch(chip8->opcode & 0xF000) {
         case 0xA000:
             chip8->I = chip8->opcode & 0x0FFF;
@@ -83,22 +83,17 @@ int cpu_exec(cpu* chip8) {
         case 0x0000:
             switch(chip8->opcode & 0x000F) {
                 case 0x0000:
-                    //puts("lmao r we here");
                     memset(chip8->gfx,0,64*32);
-                    //puts("hang on memset?");
-                    //draw
                     chip8->dflag = 1;
                     chip8->pc += 2;
                     break;
         
                 case 0x000E:
-                    //puts("EE sama");
                     chip8->sp -= 1;
                     chip8->pc = chip8->stack[chip8->sp];
                     chip8->pc += 2;
                     break;
                 default:
-                    //puts("unknown instruction");
                     break;
             }
             break;
@@ -191,7 +186,6 @@ int cpu_exec(cpu* chip8) {
             chip8->pc = chip8->V[0] + (chip8->opcode & 0x0FFF);
             break;
         case 0xC000:
-            //need to confirm what this instruction does
             chip8->V[(chip8->opcode & 0x0F00) >> 8] = ((rand() % 256) & (chip8->opcode & 0x00FF));
             chip8->pc += 2;
             break;
