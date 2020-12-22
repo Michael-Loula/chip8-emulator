@@ -1,6 +1,6 @@
 CC = clang
-CFLAGS = -Wall -I include 
-LDFLAGS = -L lib -l SDL2-2.0.0
+CFLAGS = -Wall 
+LDFLAGS = -l SDL2-2.0.0
 DEPS = cpulib.h
 
 OBJ = cpulib.o ceemu_main.o
