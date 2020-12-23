@@ -58,8 +58,8 @@ int main(int argc, char **argv) {
     
     //sdl setup
     SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(1024, 512, 0, &window, &renderer);
-    SDL_RenderSetLogicalSize(renderer, 1024, 512);
+    SDL_CreateWindowAndRenderer(640, 320, 0, &window, &renderer);
+    SDL_RenderSetLogicalSize(renderer, 640, 320);
     SDL_RenderClear(renderer);
 
     //loads rom directly into memory using read
@@ -81,8 +81,8 @@ int main(int argc, char **argv) {
             SDL_Rect rct;
 
             //constant multiple of 64 x 32
-            rct.w = 16;
-            rct.h = 16;
+            rct.w = 10;
+            rct.h = 10;
 
             //render blocks
             for (unsigned int i = 0; i < (64*32); i++) {
@@ -90,8 +90,8 @@ int main(int argc, char **argv) {
                     unsigned int x = i / 32;
                     unsigned int y = i % 32;
 
-                    rct.x = x*16;
-                    rct.y = y*16;
+                    rct.x = x*10;
+                    rct.y = y*10;
 
                     if (chip8.gfx[(64*y)+x]) {
 
