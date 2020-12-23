@@ -80,6 +80,9 @@ int cpu_init(cpu* chip8) {
 int cpu_ldrm(cpu* chip8, const char* rom_name) {
 
     int fd = open(rom_name,O_RDONLY);
+    if (fd == -1) {
+        return -1;
+    }
 
     size_t size = lseek(fd, 0, SEEK_END);
     lseek(fd, 0, SEEK_SET);
@@ -441,6 +444,6 @@ int cpu_exec(cpu* chip8) {
             printf("unknown instruction: 0x%X\n", chip8->opcode);
             
     }
-    
+
     return 0;
 }

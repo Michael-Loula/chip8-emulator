@@ -55,14 +55,28 @@ int main(int argc, char **argv) {
     //initializes processor state
     cpu_init(&chip8);
     
+    //loads rom directly into memory using read
+    if(argc > 1) {
+        puts(argv[1]);
+        if (cpu_ldrm(&chip8,argv[1]) == -1) {
+
+            puts("couldn't find rom");
+            return -1;
+
+        }
+
+    } else {
+
+        puts("please specify a ROM to load");
+        return -1;
+
+    }
+    
     //sdl setup
     SDL_Init(SDL_INIT_VIDEO);
     SDL_CreateWindowAndRenderer(640, 320, 0, &window, &renderer);
     SDL_RenderSetLogicalSize(renderer, 640, 320);
     SDL_RenderClear(renderer);
-
-    //loads rom directly into memory using read
-    cpu_ldrm(&chip8,"a.ch8");
 
     //go
     for(;;) {
