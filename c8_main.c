@@ -58,10 +58,11 @@ int main(int argc, char **argv) {
     
     //loads rom directly into memory using read
     if(argc > 1) {
-        puts(argv[1]);
+
         if (cpu_ldrm(&chip8,argv[1]) == -1) {
 
             puts("couldn't find rom");
+
             return -1;
 
         }
@@ -69,6 +70,7 @@ int main(int argc, char **argv) {
     } else {
 
         puts("please specify a ROM to load");
+        
         return -1;
 
     }
