@@ -1,5 +1,4 @@
 #include "cpulib.h"
-#include <SDL2/SDL.h>
 #include <unistd.h>
 
 //declare gfx stuff
