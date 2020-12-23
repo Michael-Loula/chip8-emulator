@@ -36,6 +36,7 @@ uint8_t keymap[16] = {
 };
 
 int main(int argc, char **argv) {
+  
     if (signal(SIGINT, _sig_handler) == SIG_ERR) {
         fprintf(stderr,"Can't catch SIGINT...exiting.\n");
     }
@@ -48,8 +49,10 @@ int main(int argc, char **argv) {
     if (signal(SIGABRT, _sig_handler) == SIG_ERR) {
         fprintf(stderr,"Can't catch SIGABRT...exiting.\n");
     }
+  
     //declares processor state onto stack
     cpu chip8;
+  
     //initializes processor state
     cpu_init(&chip8);
     
@@ -60,7 +63,6 @@ int main(int argc, char **argv) {
     SDL_RenderClear(renderer);
 
     //loads rom directly into memory using read
-
     cpu_ldrm(&chip8,"a.ch8");
 
     //go
