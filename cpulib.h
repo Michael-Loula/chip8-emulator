@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <SDL2/SDL.h>
 
 typedef struct cpu_state {
     uint16_t opcode;

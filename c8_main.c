@@ -1,5 +1,6 @@
 #include "cpulib.h"
 #include <unistd.h>
+#include <SDL2/SDL.h>
 
 //declare gfx stuff
 SDL_Renderer *renderer;
