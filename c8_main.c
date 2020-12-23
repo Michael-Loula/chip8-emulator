@@ -141,6 +141,7 @@ int main(int argc, char **argv) {
                         }
 
                     }
+                
                     break;
 
                 case SDL_KEYUP:
