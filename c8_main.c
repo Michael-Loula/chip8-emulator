@@ -76,12 +76,15 @@ int main(int argc, char **argv) {
         //draw if need be 
         if (chip8.dflag) {
             
-            //draw
+            //"pixel"
             SDL_Rect rct;
 
-            //constant multiple of 64 x 32
             rct.w = 10;
             rct.h = 10;
+
+            //black
+            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+            SDL_RenderClear(renderer);
 
             //render blocks
             for (unsigned int i = 0; i < (64*32); i++) {
@@ -96,18 +99,11 @@ int main(int argc, char **argv) {
 
                         //green
                         SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-
-                    }
-                    else {
-
-                        //black
-                        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-
+                        SDL_RenderDrawRect(renderer,&rct);
+                        SDL_RenderFillRect(renderer,&rct);
+                        
                     }
 
-                    SDL_RenderDrawRect(renderer,&rct);
-                    SDL_RenderFillRect(renderer,&rct);
-                
             }
 
             //show
