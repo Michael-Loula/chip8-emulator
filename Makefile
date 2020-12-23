@@ -3,12 +3,12 @@ CFLAGS = -Wall
 LDFLAGS = -l SDL2-2.0.0
 DEPS = cpulib.h
 
-OBJ = cpulib.o ceemu_main.o
+OBJ = cpulib.o c8_main.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) 
 
-ceemu: $(OBJ)
+chip8-emulator: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
