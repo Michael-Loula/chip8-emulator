@@ -121,6 +121,7 @@ int cpu_exec(cpu* chip8) {
             switch(chip8->opcode & 0x000F) {
 
                 case 0x0000:
+                
                     memset(chip8->gfx,0,64*32);
                     chip8->dflag = 1;
                     chip8->pc += 2;
