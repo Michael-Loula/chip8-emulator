@@ -12,4 +12,4 @@ chip8-emulator: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
-	rm -f *.o ceemu
+	rm -f *.o chip8-emulator
