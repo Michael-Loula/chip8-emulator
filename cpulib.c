@@ -76,7 +76,7 @@ int cpu_init(cpu* chip8) {
     return 0;
 }
 
-//load rom into main memory **REQUIRES POSIX COMPLIANT OS**
+//load rom 
 int cpu_ldrm(cpu* chip8, const char* rom_name) {
 
     int fd = open(rom_name,O_RDONLY);
@@ -107,7 +107,7 @@ int cycle_next(cpu* chip8) {
 
 int cpu_exec(cpu* chip8) {
 
-    /*big ol switch statement*/
+    /*opcode switch*/
     switch(chip8->opcode & 0xF000) {
 
         case 0xA000:
